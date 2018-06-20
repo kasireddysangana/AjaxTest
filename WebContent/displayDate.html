@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax Date Validation</title>
+	<script type="text/javascript">
+		function ajaxTest()
+		{
+			var xmlHttpRequest = new XMLHttpRequest();
+			xmlHttpRequest.onreadystatechange=function()
+			{
+				if(this.readyState==4 && this.status==200)
+					document.getElementById("res").value=this.responseText;
+			};
+			var url="AjaxServlet?fnum="+document.getElementById("fnum").value+"&snum="+document.getElementById("snum").value;
+			xmlHttpRequest.open("GET",url,true);
+			xmlHttpRequest.send();
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		document.write(new Date());
+	</script>
+	<hr>
+	<form>
+		<table align="center" width="30%" border="1">
+			<tr>
+				<td>First Number</td>
+				<td><input type="text" id="fnum"></td>
+			</tr>
+			<tr>
+				<td>Second Number</td>
+				<td><input type="text" id="snum"></td>
+			</tr>
+			<tr>
+				<td>Result</td>
+				<td><input type="text" id="res"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="Add" onclick="ajaxTest()"></td>
+				<td><input type="reset" value="Cancel"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

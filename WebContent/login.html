@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+	<script type="text/javascript">
+		function validateUser()
+		{
+			var xmlHttpRequest = new XMLHttpRequest();
+			xmlHttpRequest.onreadystatechange=function()
+			{
+				if(this.readyState==4 && this.status==200)
+					document.getElementById("message").innerHTML = this.responseText;
+			};
+			var url="LoginServlet?uid="+document.getElementById("uid").value+"&pwd="+document.getElementById("pwd").value;
+			xmlHttpRequest.open("GET",url,true);
+			xmlHttpRequest.send();
+		}
+	</script>
+</head>
+<body>
+	<form >
+		<table width=30% align=center bgcolor=lightpink border=1>
+			<tr>
+				<td> User Name </td>
+				<td> <input type=text id=uid> </td>
+			</tr>
+			<tr>
+				<td> Password </td>
+				<td> <input type=password id=pwd> </td>
+				
+			</tr>
+			<tr>
+				<td colspan=2><p id="message" style="color:red"></p></td>
+			</tr>
+			<tr>
+				<td> <input type=button value=Login onclick="validateUser()"> </td>
+				<td> <input type=reset value=Cancel> </td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

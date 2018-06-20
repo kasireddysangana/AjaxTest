@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax Date Validation</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#btn1").click(function(){
+				//$.get("AjaxServlet?fnum="+$("#fnum").val()+"&snum="+$("#snum").val(),function(data,status){
+					$.get("AjaxServlet",{fnum:$("#fnum").val(),snum:$("#snum").val()},function(data,status){
+					$("#res").val(data)
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		document.write(new Date());
+	</script>
+	<hr>
+	<form>
+		<table align="center" width="30%" border="1">
+			<tr>
+				<td>First Number</td>
+				<td><input type="text" id="fnum"></td>
+			</tr>
+			<tr>
+				<td>Second Number</td>
+				<td><input type="text" id="snum"></td>
+			</tr>
+			<tr>
+				<td>Result</td>
+				<td><input type="text" id="res"></td>
+			</tr>
+			<tr>
+				<td><input type="button" id="btn1" value="GetResults"></td>
+				<td><input type="reset" value="Cancel"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

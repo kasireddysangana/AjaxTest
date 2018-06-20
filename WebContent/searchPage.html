@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		function searchWord()
+		{
+			var xmlHttpRequest = new XMLHttpRequest();
+			xmlHttpRequest.onreadystatechange=function()
+			{
+				if(this.readyState==4 && this.status==200)
+				{
+					var option = document.createElement('option');
+					
+					
+					option.text=option.value=this.responseText;
+					var string = this.responseTest;
+					string.split(",");
+					var string1 = substr()
+					document.getElementById("search").add(option);
+				}
+			};
+			var url="SearchWordsServlet?searchText="+document.getElementById("searchText").value;
+			xmlHttpRequest.open("GET",url,true);
+			xmlHttpRequest.send();
+		}
+	</script>
+</head>
+<body>
+	
+		<div class="container">
+			<input type="text" id="searchText" size="20" onchange="searchWord()">
+			<br>
+			<!-- <p id="search"> -->
+			<select id="search" size="10" multiple="true" scroll-bar="disable">
+				<option>Option1</option>
+				<option hidden>Hidden Option</option>
+			</select>
+		</div>
+	
+</body>
+</html>
